@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
+    """Manager for users."""
     def create_user(self, email, password=None, **extra_fielfs):
         if not email:
             raise ValueError('User must have an email address!')
@@ -24,6 +25,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """ User in the system """
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
